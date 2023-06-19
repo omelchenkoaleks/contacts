@@ -1,6 +1,6 @@
-import 'package:contacts/src/common_widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 
+import 'package:contacts/src/features/contacts/presentation/app_bar/home_app_bar.dart';
 import 'package:contacts/src/common_widgets/responsive_center.dart';
 import 'package:contacts/src/common_widgets/responsive_two_column_layout.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
@@ -18,6 +18,9 @@ class ContactScreen extends StatelessWidget {
     final contact =
         kTestContacts.firstWhere((contact) => contact.id == contactId);
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Contact Information'.hardcoded),
+      ),
       body: contact == null
           ? EmptyPlaceholderWidget(
               message: 'Contact not found'.hardcoded,
