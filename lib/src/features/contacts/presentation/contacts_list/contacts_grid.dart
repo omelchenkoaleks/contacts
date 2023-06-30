@@ -8,6 +8,7 @@ import 'package:contacts/src/features/contacts/presentation/contacts_list/contac
 import 'package:contacts/src/constants/app_sizes.dart';
 import 'package:contacts/src/constants/test_contacts.dart';
 import 'package:contacts/src/localiation/string_hardcoded.dart';
+import 'package:go_router/go_router.dart';
 
 class ContactsGrid extends StatelessWidget {
   const ContactsGrid({super.key});
@@ -20,7 +21,7 @@ class ContactsGrid extends StatelessWidget {
         ? Center(
             child: Text(
               'No contacts found'.hardcoded,
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           )
         : ContactsLayoutGrid(
@@ -29,11 +30,12 @@ class ContactsGrid extends StatelessWidget {
               final contact = contacts[index];
               return ContactsCard(
                 contact: contact,
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => ContactScreen(contactId: contact.id),
-                  ),
-                ),
+                onPressed: () => GoRouter.of(context).go('/contact'),
+                // onPressed: () => Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (_) => ContactScreen(contactId: contact.id),
+                //   ),
+                // ),
               );
             },
           );
