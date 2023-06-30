@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:contacts/src/constants/test_contacts.dart';
 import 'package:contacts/src/common_widgets/primary_button.dart';
 import 'package:contacts/src/common_widgets/responsive_scrollable_card.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
@@ -27,6 +28,17 @@ class _ContactScreenState extends State<ContactScreen> {
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
   final _contactPersonController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    final contact =
+        kTestContacts.firstWhere((contact) => contact.id == widget.contactId);
+    _fullNameController.text = contact.fullName;
+    _phoneController.text = contact.phone;
+    _emailController.text = contact.email;
+    _contactPersonController.text = contact.contactPerson;
+  }
 
   final _isLoading = false;
 

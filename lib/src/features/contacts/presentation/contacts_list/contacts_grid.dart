@@ -1,9 +1,9 @@
 import 'dart:math';
 
+import 'package:contacts/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
-import 'package:contacts/src/features/contacts/presentation/contact/contact_screen.dart';
 import 'package:contacts/src/features/contacts/presentation/contacts_list/contacts_card.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
 import 'package:contacts/src/constants/test_contacts.dart';
@@ -30,7 +30,11 @@ class ContactsGrid extends StatelessWidget {
               final contact = contacts[index];
               return ContactsCard(
                 contact: contact,
-                onPressed: () => GoRouter.of(context).go('/contact'),
+                onPressed: () => context.goNamed(
+                  AppRoute.contact.name,
+                  params: {'id': contact.id},
+                ),
+                // onPressed: () => GoRouter.of(context).go('/contact'),
                 // onPressed: () => Navigator.of(context).push(
                 //   MaterialPageRoute(
                 //     builder: (_) => ContactScreen(contactId: contact.id),
