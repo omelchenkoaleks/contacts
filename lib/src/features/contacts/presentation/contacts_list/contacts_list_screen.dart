@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:contacts/src/features/contacts/presentation/app_bar/home_app_bar.dart';
+import 'package:contacts/src/localiation/string_hardcoded.dart';
 import 'package:contacts/src/common_widgets/responsive_center.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
 import 'package:contacts/src/features/contacts/presentation/contacts_list/contacts_grid.dart';
@@ -38,7 +38,10 @@ class _ContactsListScreenState extends State<ContactsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(),
+      appBar: AppBar(
+        title: Text('Contact List'.hardcoded),
+        centerTitle: true,
+      ),
       body: CustomScrollView(
         controller: _scrollController,
         slivers: const [

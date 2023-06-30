@@ -1,4 +1,3 @@
-import 'package:contacts/src/constants/test_contacts.dart';
 import 'package:flutter/material.dart';
 
 import 'package:contacts/src/common_widgets/primary_button.dart';
@@ -49,49 +48,55 @@ class _ContactScreenState extends State<ContactScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveScrollableCard(
-      child: Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            AddressFormField(
-              formFieldKey: ContactScreen.fullNameKey,
-              controller: _fullNameController,
-              labelText: 'FullName'.hardcoded,
-              keyboardType: TextInputType.name,
-              enabled: !_isLoading,
-            ),
-            gapH8,
-            AddressFormField(
-              formFieldKey: ContactScreen.phoneKey,
-              controller: _phoneController,
-              labelText: 'Phone'.hardcoded,
-              keyboardType: TextInputType.phone,
-              enabled: !_isLoading,
-            ),
-            gapH8,
-            AddressFormField(
-              formFieldKey: ContactScreen.emailKey,
-              controller: _emailController,
-              labelText: 'Email'.hardcoded,
-              keyboardType: TextInputType.emailAddress,
-              enabled: !_isLoading,
-            ),
-            gapH8,
-            AddressFormField(
-              formFieldKey: ContactScreen.contactPersonCodeKey,
-              controller: _contactPersonController,
-              labelText: 'Contact Person'.hardcoded,
-              keyboardType: TextInputType.multiline,
-              enabled: !_isLoading,
-            ),
-            PrimaryButton(
-              text: 'Submit'.hardcoded,
-              onPressed: _submit,
-              isLoading: _isLoading,
-            )
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detailed contact'.hardcoded),
+        centerTitle: true,
+      ),
+      body: ResponsiveScrollableCard(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              AddressFormField(
+                formFieldKey: ContactScreen.fullNameKey,
+                controller: _fullNameController,
+                labelText: 'FullName'.hardcoded,
+                keyboardType: TextInputType.name,
+                enabled: !_isLoading,
+              ),
+              gapH8,
+              AddressFormField(
+                formFieldKey: ContactScreen.phoneKey,
+                controller: _phoneController,
+                labelText: 'Phone'.hardcoded,
+                keyboardType: TextInputType.phone,
+                enabled: !_isLoading,
+              ),
+              gapH8,
+              AddressFormField(
+                formFieldKey: ContactScreen.emailKey,
+                controller: _emailController,
+                labelText: 'Email'.hardcoded,
+                keyboardType: TextInputType.emailAddress,
+                enabled: !_isLoading,
+              ),
+              gapH8,
+              AddressFormField(
+                formFieldKey: ContactScreen.contactPersonCodeKey,
+                controller: _contactPersonController,
+                labelText: 'Contact Person'.hardcoded,
+                keyboardType: TextInputType.multiline,
+                enabled: !_isLoading,
+              ),
+              PrimaryButton(
+                text: 'Submit'.hardcoded,
+                onPressed: _submit,
+                isLoading: _isLoading,
+              )
+            ],
+          ),
         ),
       ),
     );
