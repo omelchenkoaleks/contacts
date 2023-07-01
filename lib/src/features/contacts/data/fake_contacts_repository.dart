@@ -1,3 +1,5 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:contacts/src/constants/test_contacts.dart';
 import 'package:contacts/src/features/contacts/domain/contact.dart';
 
@@ -28,3 +30,7 @@ class FakeContactsRepository {
         .map((contacts) => contacts.firstWhere((contact) => contact.id == id));
   }
 }
+
+final contactsRepositoryProvider = Provider<FakeContactsRepository>((ref) {
+  return FakeContactsRepository.instance;
+});
