@@ -34,3 +34,21 @@ class FakeContactsRepository {
 final contactsRepositoryProvider = Provider<FakeContactsRepository>((ref) {
   return FakeContactsRepository.instance;
 });
+
+final contactsListStreamProvider =
+    StreamProvider.autoDispose<List<Contact>>((ref) {
+  final contactsRepository = ref.watch(contactsRepositoryProvider);
+  return contactsRepository.watchContactsList();
+});
+
+final contactsListFutureProvider =
+    FutureProvider.autoDispose<List<Contact>>((ref) {
+  final contactsRepository = ref.watch(contactsRepositoryProvider);
+  return contactsRepository.fetchContactsList();
+});
+
+final contactProvider =
+    StreamProvider.autoDispose.family<Contact, String>((ref, id) {
+  final contactsRepository = ref.watch(contactsRepositoryProvider);
+  return contactsRepository.watchContact(id);
+});

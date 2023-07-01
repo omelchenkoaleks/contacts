@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:contacts/src/features/contacts/presentation/contact/contact_screen.dart';
+import 'package:contacts/src/features/contacts/presentation/contact/contact_detail_screen.dart';
 import 'package:contacts/src/features/contacts/presentation/contacts_list/contacts_list_screen.dart';
 
 enum AppRoute {
@@ -24,7 +23,7 @@ final goRouter = GoRouter(
           // builder: (context, state) => const ContactScreen(contactId: '1'),
           builder: (context, state) {
             final productId = state.params['id']!;
-            return ContactScreen(contactId: productId);
+            return ContactDetailScreen(contactId: productId);
           },
         ),
       ],

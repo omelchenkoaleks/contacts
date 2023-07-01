@@ -2,21 +2,23 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:contacts/src/routing/app_router.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:contacts/src/routing/app_router.dart';
 import 'package:contacts/src/features/contacts/data/fake_contacts_repository.dart';
 import 'package:contacts/src/features/contacts/presentation/contacts_list/contacts_card.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
 import 'package:contacts/src/localiation/string_hardcoded.dart';
 
-class ContactsGrid extends StatelessWidget {
+class ContactsGrid extends ConsumerWidget {
   const ContactsGrid({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final contacts = FakeContactsRepository.instance.getContactsList();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final contactsRepository = ref.watch(contactsRepositoryProvider);
+    final contacts = contactsRepository.getContactsList();
 
     return contacts.isEmpty
         ? Center(
@@ -35,12 +37,6 @@ class ContactsGrid extends StatelessWidget {
                   AppRoute.contact.name,
                   params: {'id': contact.id},
                 ),
-                // onPressed: () => GoRouter.of(context).go('/contact'),
-                // onPressed: () => Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (_) => ContactScreen(contactId: contact.id),
-                //   ),
-                // ),
               );
             },
           );

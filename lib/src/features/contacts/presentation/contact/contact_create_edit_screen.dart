@@ -1,7 +1,6 @@
-import 'package:contacts/src/features/contacts/data/fake_contacts_repository.dart';
 import 'package:flutter/material.dart';
 
-import 'package:contacts/src/constants/test_contacts.dart';
+import 'package:contacts/src/features/contacts/data/fake_contacts_repository.dart';
 import 'package:contacts/src/common_widgets/primary_button.dart';
 import 'package:contacts/src/common_widgets/responsive_scrollable_card.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
