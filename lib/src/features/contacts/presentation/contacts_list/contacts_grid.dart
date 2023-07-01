@@ -1,21 +1,22 @@
 import 'dart:math';
 
-import 'package:contacts/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
+import 'package:contacts/src/routing/app_router.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:contacts/src/features/contacts/data/fake_contacts_repository.dart';
 import 'package:contacts/src/features/contacts/presentation/contacts_list/contacts_card.dart';
 import 'package:contacts/src/constants/app_sizes.dart';
-import 'package:contacts/src/constants/test_contacts.dart';
 import 'package:contacts/src/localiation/string_hardcoded.dart';
-import 'package:go_router/go_router.dart';
 
 class ContactsGrid extends StatelessWidget {
   const ContactsGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const contacts = kTestContacts;
+    final contacts = FakeContactsRepository.instance.getContactsList();
 
     return contacts.isEmpty
         ? Center(
